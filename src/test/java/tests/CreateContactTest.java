@@ -28,5 +28,10 @@ public class CreateContactTest extends TestBase {
 
         Assert.assertTrue(detailsPage.isContactDisplayed(contact),
                 "Saved contact name was not displayed on the contact details screen");
+
+        ContactsListPage listPage = detailsPage.goBackToList();
+
+        Assert.assertTrue(listPage.isContactDisplayed(contact),
+                "Saved contact was not found in the contacts list after scrolling");
     }
 }

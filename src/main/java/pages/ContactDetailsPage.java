@@ -22,4 +22,10 @@ public class ContactDetailsPage extends PageBase {
         By nameLocator = AppiumBy.androidUIAutomator("new UiSelector().text(\"" + fullName + "\")");
         return isDisplayed(nameLocator);
     }
+
+    @Step("Go back to the contacts list")
+    public ContactsListPage goBackToList() {
+        driver.navigate().back();
+        return new ContactsListPage(driver);
+    }
 }
