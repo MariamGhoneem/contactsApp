@@ -20,6 +20,6 @@ public class ContactDetailsPage extends PageBase {
     public boolean isContactDisplayed(Contact contact) {
         String fullName = contact.getFirstName() + " " + contact.getLastName();
         By nameLocator = AppiumBy.androidUIAutomator("new UiSelector().text(\"" + fullName + "\")");
-        return !driver.findElements(nameLocator).isEmpty();
+        return isDisplayed(nameLocator);
     }
 }

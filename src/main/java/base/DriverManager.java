@@ -6,6 +6,7 @@ import utils.ConfigReader;
 
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.time.Duration;
 
 public class DriverManager {
 
@@ -25,9 +26,12 @@ public class DriverManager {
                 .setAppPackage(ConfigReader.get("appPackage"))
                 .setAppActivity(ConfigReader.get("appActivity"))
                 .setNoReset(Boolean.parseBoolean(ConfigReader.get("noReset")));
+        options.setCapability("appium:forceAppLaunch", Boolean.parseBoolean(ConfigReader.get("forceAppLaunch")));
 
         try {
-            return new AndroidDriver(URI.create(ConfigReader.get("appium.server.url")).toURL(), options);
+            AndroidDriver newDriver = new AndroidDriver(URI.create(ConfigReader.get("appium.server.url")).toURL(), options);
+            newDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+            return newDriver;
         } catch (MalformedURLException e) {
             throw new RuntimeException("Invalid Appium server URL", e);
         }

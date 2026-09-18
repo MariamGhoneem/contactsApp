@@ -20,25 +20,25 @@ public class CreateContactPage extends PageBase {
 
     @Step("Enter first name")
     public CreateContactPage enterFirstName(String firstName) {
-        driver.findElement(FIRST_NAME_FIELD).sendKeys(firstName);
+        type(FIRST_NAME_FIELD, firstName);
         return this;
     }
 
     @Step("Enter last name")
     public CreateContactPage enterLastName(String lastName) {
-        driver.findElement(LAST_NAME_FIELD).sendKeys(lastName);
+        type(LAST_NAME_FIELD, lastName);
         return this;
     }
 
     @Step("Enter phone number")
     public CreateContactPage enterPhoneNumber(String phoneNumber) {
-        driver.findElement(PHONE_FIELD).sendKeys("+20" + phoneNumber);
+        type(PHONE_FIELD, "+20" + phoneNumber);
         return this;
     }
 
     @Step("Save the contact")
     public ContactDetailsPage save() {
-        driver.findElement(SAVE_BUTTON).click();
+        click(SAVE_BUTTON);
         return new ContactDetailsPage(driver);
     }
 

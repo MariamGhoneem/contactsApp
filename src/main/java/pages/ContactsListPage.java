@@ -15,7 +15,7 @@ public class ContactsListPage extends PageBase {
 
     @Step("Tap the add contact button")
     public CreateContactPage tapAddContact() {
-        driver.findElement(ADD_CONTACT_BUTTON).click();
+        click(ADD_CONTACT_BUTTON);
         return new CreateContactPage(driver);
     }
 }
